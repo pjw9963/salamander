@@ -1,1 +1,3 @@
 **/env
+**salamander/salamander/__pycache__
+**salamander/db.sqlite3
