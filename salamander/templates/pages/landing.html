@@ -5,6 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-
+    <h1> Hello World! </h1>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+  $.ajax({ url: 'https://api.themoviedb.org/3/movie/now_playing?api_key=1e94de5ed2dc8e3c7ef6674f1d7b6822&language=en-US&page=1',
+    type: 'GET',
+    success:function(r){
+      for (var i = 0; i < r.results.length; i++) {
+        var name = r.results[i].title;;
+        var desc = desc = r.results[i].overview;;
+        var pic = r.results[i].poster_path;
+        $("body").append(name + '<img src="https://image.tmdb.org/t/p/w500' + pic + '"></img>');
+      }
+    },
+    error:function(exception){alert('Exception:'+exception);}
+    });
+});
+</script>
 </html>
