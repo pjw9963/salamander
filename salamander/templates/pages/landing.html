@@ -1,16 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'pages/landing.css' %}">
-</head>
-<body>
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pages/landing.css' %}">
+{% endblock %}
+
+{% block body %}
     <h1> Hello World! </h1>
-</body>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block scripts %}
 <script>
 $(document).ready(function() {
   $.ajax({ url: 'https://api.themoviedb.org/3/movie/now_playing?api_key=1e94de5ed2dc8e3c7ef6674f1d7b6822&language=en-US&page=1',
@@ -27,4 +26,4 @@ $(document).ready(function() {
     });
 });
 </script>
-</html>
+{% endblock %}
