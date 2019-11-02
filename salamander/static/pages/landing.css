@@ -42,3 +42,10 @@ h1 {
     letter-spacing: 0.25em;
     text-shadow: 2px 2px #141414;
 }
+
+#salamander1 {
+    width: 150px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
