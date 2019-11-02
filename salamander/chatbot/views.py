@@ -27,13 +27,14 @@ def newMessage(request):
 
 def updateModel(request):
     movie_id = str(request.GET["id"])
-    vote = str(request.GET["value"])
+    vote = int(request.GET["value"])
     the_movie = movie.objects.get(id=movie_id)
-    current_sum = the_movie.sum
+    current_sum = int(the_movie.sum)
     current_sum += vote
     the_movie.sum = current_sum
-    the_movie.total += the_movie.total
+    the_movie.total += int(the_movie.total)
     the_movie.save()
+    return JsonResponse({'id' : movie_id, 'value': vote})
 
 
 @csrf_exempt

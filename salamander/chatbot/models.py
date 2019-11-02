@@ -6,4 +6,4 @@ class Movie(models.Model):
     total = models.IntegerField()
     sum = models.IntegerField()
     id = models.IntegerField(primary_key=True)
-
+    date = models.DateField()
