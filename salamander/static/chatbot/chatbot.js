@@ -7,6 +7,7 @@ $(document).ready(function() {
 });
 
 var promptType = 1;
+var movies;
 
 $("#chat").submit(function(e) {
     e.preventDefault();
@@ -20,6 +21,7 @@ $("#chat").submit(function(e) {
           type: 'GET',
           data: {'stress': $("#userInput").val()},
           success:function(result){
+            movies = result;
             var movieKeys = [];
             var idx = 1;
             $("#movieCards").remove();
@@ -49,6 +51,7 @@ $("#chat").submit(function(e) {
             }
          }
     });
+    promptType = 2;
     break;
     case 2: // Follow up on question 1, ask opinion on movie
 
