@@ -25,15 +25,17 @@ def newMessage(request):
     return JsonResponse(request.GET["message"])
 
 
+@csrf_exempt
 def updateModel(request):
-    movie_id = str(request.GET["id"])
-    vote = int(request.GET["value"])
-    the_movie = movie.objects.get(id=movie_id)
-    current_sum = int(the_movie.sum)
-    current_sum += vote
-    the_movie.sum = current_sum
-    the_movie.total += 1
-    the_movie.save()
+    if request.method == "POST":
+        movie_id = str(request.POST["id"])
+        vote = int(request.POST["value"])
+        the_movie = movie.objects.get(id=movie_id)
+        current_sum = int(the_movie.sum)
+        current_sum += vote
+        the_movie.sum = current_sum
+        the_movie.total += 1
+        the_movie.save()
     return JsonResponse({'id' : movie_id, 'value': vote})
 
 
