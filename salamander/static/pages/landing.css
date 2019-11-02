@@ -9,8 +9,7 @@ body {
 #chatArea {
     white-space: pre-wrap;
     overflow-y: scroll;
-     min-width: 50vw;
-    min-height: 50vh;
+    height: 70vh;
     border: 2px solid black;
 }
 
