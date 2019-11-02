@@ -1,3 +1,27 @@
 body {
     background-color: #79aec8;
 }
+
+#chat {
+    background-color: white;
+}
+
+#chatArea {
+    white-space: pre-wrap;
+    overflow-y: scroll;
+     min-width: 50vw;
+    min-height: 50vh;
+    border: 2px solid black;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #666;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ddd;
+}
