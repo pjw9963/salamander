@@ -1,5 +1,4 @@
 **/env
 **/.idea
 **salamander/salamander/__pycache__
-**salamander/db.sqlite3
-
+**salamander/db.sqlite3-journal

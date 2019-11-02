@@ -3,8 +3,11 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from . import models as models
+
 
 def index(request):
+    print(models.Movie.objects)
     return render(request, 'chatbot/index.html')
 
 @csrf_exempt
