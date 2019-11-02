@@ -1,0 +1,44 @@
+{"intents": [
+    {"tag": "greeting",
+    "patterns": ["Hi", "Hey", "Hello"],
+    "responses":["Hey how's it going?", "Hey!"],
+    "context_set": ""
+    },
+    {"tag": "stress1",
+    "patterns": ["1", "One"],
+    "responses":["Glad you had a relaxing experience!", "Were you meditating or watching a movie?"],
+    "context_set": ""
+    },
+    {"tag": "stress2",
+    "patterns": ["2", "Two"],
+    "responses":["I know, I was pretty stressed when olaf melted into a puddle too"],
+    "context_set": ""
+    },
+    {"tag": "stress3",
+    "patterns": ["3", "Three"],
+    "responses":["Not too stressed, not too relaxed... just right", "Alright, so this wasn't the worst stressful experience you've had"],
+    "context_set": ""
+    },
+    {"tag": "stress4",
+    "patterns": ["4", "Four"],
+    "responses":["So what you're telling me is that this movie needs more jumpscares"],
+    "context_set": ""
+    },
+    {"tag": "stress5",
+    "patterns": ["5", "Five"],
+    "responses":["Oh snap you were really stressed out! Would you like to destress with another movie?", "This movie was more stressful than your impending college debt, huh?"],
+    "context_set": ""
+    },
+    {"tag": "goodbye",
+    "patterns": ["Bye", "Goodbye", "See ya"],
+    "responses":["Awe I hope to see you soon!", "See ya! You know who to go to when you're binging movies( ͡° ͜ʖ ͡°)"],
+    "context_set": ""
+    },
+    {"tag": "name",
+    "patterns": ["What's your name?", "name"],
+    "responses":["I'm chatbot, nice to meet you!", "Oh heck I know the answer to this one... uh... Oh right! It's chatbot!"],
+    "context_set": ""
+    }
+    
+
+]}
