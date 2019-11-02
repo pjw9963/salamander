@@ -4,7 +4,11 @@
 {% endblock %}
 
 {% block body %}
-    <h1> Hello World! </h1>
+
+    <div>
+        <img style="margin: auto;display: block;" src="https://media1.tenor.com/images/2901916601173b271ef10806ecc9afd8/tenor.gif?itemid=14713237">
+    </div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -17,7 +21,7 @@ $(document).ready(function() {
         var name = r.results[i].title;
         var desc = desc = r.results[i].overview;
         var pic = r.results[i].poster_path;
-        $("body").append(name + '<img src="https://image.tmdb.org/t/p/w500' + pic + '"></img>');
+        //$("body").append(name + '<img src="https://image.tmdb.org/t/p/w500' + pic + '"></img>');
       }
     },
     error:function(exception){alert('Exception:'+exception);}
