@@ -20,15 +20,31 @@ def get_movies(request):
             results[m.id] = m.name
     return JsonResponse(results)
 
+
+def newMessage(request):
+    return JsonResponse(request.GET["message"])
+
+
+def updateModel(request):
+    movie_id = str(request.GET["id"])
+    vote = str(request.GET["value"])
+    the_movie = movie.objects.get(id=movie_id)
+    current_sum = the_movie.sum
+    current_sum += vote
+    the_movie.sum = current_sum
+    the_movie.total += the_movie.total
+    the_movie.save()
+
+
 @csrf_exempt
 def sendmsg(request):
-    #Reject anything that's not a POST request
+    # Reject anything that's not a POST request
     if request.method != "POST":
         errMsg = {
             "error": "Invalid method used."
         }
         return JsonResponse(errMsg)
-    #Handle message
+    # Handle message
     msg = request.POST["msg"]
     print(msg)
     data = {
