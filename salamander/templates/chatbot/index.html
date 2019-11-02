@@ -8,12 +8,19 @@
 {% block body %}
 
 <div class="container">
-    <form id="chat" class="mt-5 p-5">
+    <form id="chat" class="m-5 p-5">
         <div class="text-center"><h1> salamander </h1></div>
 
         <div id="chatArea"></div>
         <input id="userInput" class="w-100 mt-2" type="text"/>
         <button type="submit" class="btn btn-primary w-100 mt-2 salamander-button">Send</button>
+        <div id="ratings">
+            <a class="rate" onclick="selectRating(1)"><span class="badge badge-secondary">1</span></a>
+            <a class="rate" onclick="selectRating(2)"><span class="badge badge-secondary">2</span></a>
+            <a class="rate" onclick="selectRating(3)"><span class="badge badge-secondary">3</span></a>
+            <a class="rate" onclick="selectRating(4)"><span class="badge badge-secondary">4</span></a>
+            <a class="rate" onclick="selectRating(5)"><span class="badge badge-secondary">5</span></a>
+        </div>
     </form>
 </div>
 

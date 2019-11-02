@@ -20,6 +20,8 @@ function addToChat(msg) {
 }
 
 $(document).ready(function() {
+    $("#chatArea").append("<b> Welcome to Salamander </b>")
+    $("#chatArea").append("<em> Your personal recommendation guide </em>");
     addToChat("Sal: Hi! I'm Sal. What's your name? ");
 
 });
@@ -37,7 +39,7 @@ $("#chat").submit(function(e) {
             var stress = $("#userInput").val();
             var val = -$("#userInput").val() + 6;
             $.ajax({
-                url: '/chatbot/get_movies',
+                url: '/get_movies',
                 type: 'GET',
                 data: {
                     'stress': val
@@ -107,13 +109,13 @@ $("#chat").submit(function(e) {
                 $("#movieCards").append('<a onclick="setInputText(`' + movies[movieKeys[i]].title + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + movies[movieKeys[i]].poster_path + '"></img></a>');
             }
 
-            addToChat("Sal: " + getStressMessages(parseInt(stress)))
+            addToChat("Sal: " + getStressMessages(parseInt(stress)));
 
             changePrompt(10);
             break;
         case 10: // Rating
         $.ajax({
-                url: '/chatbot/updateModel',
+                url: '/updateModel',
                 type: 'POST',
                 data: {
                     id: getIdFromName($("#userInput").val().replace(/\w+[.!?]?$/, '').trim()),
@@ -132,6 +134,7 @@ $("#chat").submit(function(e) {
 
 function changePrompt(x) {
     if (promptType != x) {
+        $("#ratings").css("display", "none");
         switch (x) {
             case 0: // Name Prompt
                 break;
@@ -146,6 +149,7 @@ function changePrompt(x) {
             case 10: // Rate
                 promptType = 10;
                 addToChat("Sal: Rate a movie (format: title rating[1-5])");
+                $("#ratings").css("display", "flex");
                 break;
         }
     }
@@ -206,4 +210,8 @@ for (var x = 0; x < Object.keys(movies).length; x++) {
         return Object.values(movies)[x].id;
     }
 }
+}
+
+function selectRating(x) {
+    $("#userInput").val($("#userInput").val() + " " + x);
 }

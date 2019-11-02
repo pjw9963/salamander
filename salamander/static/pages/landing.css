@@ -10,8 +10,25 @@ body {
 #chatArea {
     white-space: pre-wrap;
     overflow-y: scroll;
-    height: 60vh;
+    height: 50vh;
     border: 2px solid black;
+    position: relative;
+}
+
+#ratings {
+    position: relative;
+    font-size: 48px;
+    display: none;
+    float: right;
+    overflow: auto;
+}
+
+.rate {
+margin-right: 0.25em;
+}
+
+.badge {
+    background-color: #824b90!important;
 }
 
 .salamander-button {
@@ -22,6 +39,6 @@ h1 {
     font-weight: 700;
     color: #7b904b;
     font-style: italic;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.25em;
     text-shadow: 2px 2px #141414;
 }
