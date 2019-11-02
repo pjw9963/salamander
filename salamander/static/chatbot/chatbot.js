@@ -36,7 +36,7 @@ $("#chat").submit(function(e) {
             changePrompt(1);
             break;
         case 1: // Stress Level Prompt
-            var stress = $("#userInput").val();
+            stress = $("#userInput").val();
             var val = -$("#userInput").val() + 6;
             $.ajax({
                 url: '/get_movies',
@@ -66,12 +66,15 @@ $("#chat").submit(function(e) {
                                 }
                                 $("#movieCards").append('<a onclick="setInputText(`' + result[r.id] + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + r.poster_path + '"></img></a>');
                                 changePrompt(10);
+
                                 if (gotten == movieKeys.length) { // Ready to display popular genre results
                                     if (getHighest(allGenres) < movieKeys.length) {
-                                        addToChat("Sal: Want to watch a " + getHighestIdx(allGenres) + " movie?");
+                                        addToChat("Sal: Want to watch a " + getHighestIdx(allGenres) + " movie? (Yes or No)");
                                         changePrompt(2);
                                         $("#movieCards").remove();
                                         $("#chatArea").append('<div id="movieCards" style="display: inline-block"></div>');
+                                    } else {
+                                        addToChat("Sal: " + getStressMessages(parseInt(stress)));
                                     }
                                 }
 
@@ -141,7 +144,7 @@ function changePrompt(x) {
                 break;
             case 1: // Stress
                 promptType = 1;
-                addToChat("Sal: Enter your stress level (1-5): ");
+                addToChat("Sal: How stressed do you feel today on a scale of one to five? ");
                 break;
             case 2:
                 promptType = 2;
@@ -149,13 +152,15 @@ function changePrompt(x) {
                 break;
             case 10: // Rate
                 promptType = 10;
-                addToChat("Sal: Rate a movie (format: title rating[1-5])");
+                addToChat("Sal: Rate a movie based on how calm or stressful it is on a scale of one to five");
+                addToChat("Sal: Click on a movie and number to rate it");
                 $("#ratings").css("display", "flex");
                 break;
         }
     }
 }
 
+// Updates text of input field for easier data input
 function setInputText(i) {
     $("#userInput").val(i);
 }
@@ -182,6 +187,7 @@ function getHighest(a) {
     return high;
 }
 
+// Get related messages based on stress level
 function getStressMessages(i) {
     switch (i) {
         case 1:
