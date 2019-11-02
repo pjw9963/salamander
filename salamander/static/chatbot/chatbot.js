@@ -6,9 +6,16 @@ $(document).ready(function() {
     addToChat("SERVER: Enter your stress level (1-5): ")
 });
 
+var promptType = 1;
+
 $("#chat").submit(function(e) {
     e.preventDefault();
     addToChat("ME: " + $("#userInput").val());
+    switch (promptType) {
+    case 0: // Base Prompt
+
+    break;
+    case 1: // Stress Level Prompt
     $.ajax({ url: '/chatbot/get_movies',
           type: 'GET',
           data: {'stress': $("#userInput").val()},
@@ -26,7 +33,7 @@ $("#chat").submit(function(e) {
                 success:function(r){
                     // addToChat("SERVER: " + idx + " - " + result[r.id]);
                     idx++;
-                    $("#movieCards").append('<img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + r.poster_path + '"></img>');
+                    $("#movieCards").append('<a onclick="setInputText(`' + result[r.id] + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + r.poster_path + '"></img></a>');
                     var genres = "";
                     for (var j = 0; j < r.genres.length; j++) {
                         if (j != r.genres.length-1) {
@@ -35,13 +42,22 @@ $("#chat").submit(function(e) {
                             genres += r.genres[j].name;
                         }
                     }
-                    addToChat(genres);
+                    //addToChat(genres);
                 },
             error:function(exception){alert('Exception:'+exception);}
             });
             }
          }
     });
+    break;
+    case 2: // Follow up on question 1, ask opinion on movie
+
+    break;
+    }
     $("#userInput").val(" ");
 
 });
+
+function setInputText(i) {
+    $("#userInput").val(i);
+}
