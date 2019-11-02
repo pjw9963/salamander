@@ -54,7 +54,16 @@ $("#chat").submit(function(e) {
     promptType = 2;
     break;
     case 2: // Follow up on question 1, ask opinion on movie
+    addToChat("SERVER: Rate a movie (format: title rating[1-5])");
 
+    $.ajax({url: '/chatbot/updateModel',
+                type: 'POST',
+                data: {id: Object.keys(movies)[Object.values(movies).indexOf($("#userInput").val().replace(/\w+[.!?]?$/, '').trim())], value: $("#userInput").val().split(" ")[$("#userInput").val().split(" ").length-1]},
+                success:function(r){
+                    promptType = 1;
+                    addToChat("SERVER: Rating Submitted");
+                }
+        });
     break;
     }
     $("#userInput").val(" ");
