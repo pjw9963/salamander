@@ -34,7 +34,7 @@ def updateModel(request):
         current_sum = int(the_movie.sum)
         current_sum += vote
         the_movie.sum = current_sum
-        the_movie.total += 1
+        the_movie.total +=1
         the_movie.save()
     return JsonResponse({'id' : movie_id, 'value': vote})
 
