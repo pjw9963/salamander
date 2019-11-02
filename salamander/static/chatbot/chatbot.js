@@ -67,9 +67,7 @@ $("#chat").submit(function(e) {
                                         addToChat("Sal: Want to watch a " + getHighestIdx(allGenres) + " movie?");
                                         changePrompt(2);
                                     } else { // Don't prompt users if all things are the same
-
                                         $("#movieCards").append('<a onclick="setInputText(`' + result[r.id] + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + r.poster_path + '"></img></a>');
-
                                         changePrompt(10);
                                     }
                                 }
@@ -106,7 +104,7 @@ $("#chat").submit(function(e) {
             $("#chatArea").append('<div id="movieCards" style="display: inline-block"></div>');
 
             for (var i in movieKeys) {
-                $("#movieCards").append('<a onclick="setInputText(`' + movies[movieKeys[i]].id + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + movies[movieKeys[i]].poster_path + '"></img></a>');
+                $("#movieCards").append('<a onclick="setInputText(`' + movies[movieKeys[i]].title + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + movies[movieKeys[i]].poster_path + '"></img></a>');
             }
 
             addToChat("Sal: " + getStressMessages(parseInt(stress)))
@@ -114,12 +112,11 @@ $("#chat").submit(function(e) {
             changePrompt(10);
             break;
         case 10: // Rating
-
-            $.ajax({
+        $.ajax({
                 url: '/chatbot/updateModel',
                 type: 'POST',
                 data: {
-                    id: Object.keys(movies)[Object.values(movies).indexOf($("#userInput").val().replace(/\w+[.!?]?$/, '').trim())],
+                    id: getIdFromName($("#userInput").val().replace(/\w+[.!?]?$/, '').trim()),
                     value: $("#userInput").val().split(" ")[$("#userInput").val().split(" ").length - 1]
                 },
                 success: function(r) {
@@ -201,4 +198,12 @@ function getStressMessages(i) {
             break;
     }
 
+}
+
+function getIdFromName(name) {
+for (var x = 0; x < Object.keys(movies).length; x++) {
+    if (Object.values(movies)[x].title == name) {
+        return Object.values(movies)[x].id;
+    }
+}
 }
