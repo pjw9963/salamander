@@ -1,9 +1,10 @@
 body {
-    background-color: #79aec8;
+    background-color: #141414;
 }
 
 #chat {
     background-color: white;
+    border: 4px solid #7b904b;
 }
 
 #chatArea {
@@ -13,14 +14,6 @@ body {
     border: 2px solid black;
 }
 
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: #666;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ddd;
+.salamander-button {
+    background-color: #7b904b!important;
 }

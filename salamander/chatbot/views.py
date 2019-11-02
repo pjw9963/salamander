@@ -16,7 +16,7 @@ def get_movies(request):
     results = {}
     if request.method == "GET":
         for m in movie.objects.raw(
-                "Select *, sum / total as 'result' From chatbot_movie WHERE result = " + str(request.GET["stress"]) + " LIMIT 8"):
+                "Select *, ROUND(sum / total, 0) as 'result' From chatbot_movie WHERE result = " + str(request.GET["stress"]) + " LIMIT 8"):
             results[m.id] = m.name
     return JsonResponse(results)
 
