@@ -25,13 +25,13 @@ def sendmsg(request):
     #Reject anything that's not a POST request
     if request.method != "POST":
         errMsg = {
-            "error": "bruh"
+            "error": "Invalid method used."
         }
         return JsonResponse(errMsg)
     #Handle message
     msg = request.POST["msg"]
     print(msg)
     data = {
-        "response": "bruh"
+        "response": f"echo: {msg}"
     }
     return JsonResponse(data)
