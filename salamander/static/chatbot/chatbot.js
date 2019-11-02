@@ -64,13 +64,14 @@ $("#chat").submit(function(e) {
                                         allGenres[r.genres[i].name] += 1;
                                     }
                                 }
+                                $("#movieCards").append('<a onclick="setInputText(`' + result[r.id] + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + r.poster_path + '"></img></a>');
+                                changePrompt(10);
                                 if (gotten == movieKeys.length) { // Ready to display popular genre results
                                     if (getHighest(allGenres) < movieKeys.length) {
                                         addToChat("Sal: Want to watch a " + getHighestIdx(allGenres) + " movie?");
                                         changePrompt(2);
-                                    } else { // Don't prompt users if all things are the same
-                                        $("#movieCards").append('<a onclick="setInputText(`' + result[r.id] + '`)"><img class="m-3" style="max-width: 20%" src="https://image.tmdb.org/t/p/w500' + r.poster_path + '"></img></a>');
-                                        changePrompt(10);
+                                        $("#movieCards").remove();
+                                        $("#chatArea").append('<div id="movieCards" style="display: inline-block"></div>');
                                     }
                                 }
 

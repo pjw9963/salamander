@@ -46,6 +46,13 @@ h1 {
 #salamander1 {
     width: 150px;
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+    right: 25%;
+    bottom: 35%;
+}
+
+#salamander2  {
+    position: fixed;
+    width: 150px;
+    top: 20px;
+    left: 50%;
 }
