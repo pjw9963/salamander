@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import nltk
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.stem import PorterStemmer, WordNetLemmatizer
 
 from .models import Movie as movie
 
@@ -23,6 +26,12 @@ def get_movies(request):
 
 def newMessage(request):
     return JsonResponse(request.GET["message"])
+
+
+def analyize_words(request):
+    sents = sent_tokenize(request.GET["stress"])
+    words = word_tokenize(sents[0])
+    return JsonResponse(words, safe=False)
 
 
 @csrf_exempt
