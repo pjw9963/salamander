@@ -10,10 +10,18 @@ body {
 #chatArea {
     white-space: pre-wrap;
     overflow-y: scroll;
-    height: 70vh;
+    height: 60vh;
     border: 2px solid black;
 }
 
 .salamander-button {
     background-color: #7b904b!important;
+}
+
+h1 {
+    font-weight: 700;
+    color: #7b904b;
+    font-style: italic;
+    letter-spacing: 0.5em;
+    text-shadow: 2px 2px #141414;
 }
