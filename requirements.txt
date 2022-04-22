@@ -1,4 +1,4 @@
-Django==2.2.8
+Django==2.2.28
 nltk==3.4.5
 pytz==2019.3
 six==1.12.0
